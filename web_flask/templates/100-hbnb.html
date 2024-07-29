@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HBNB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>HBNB</h1>
+        </div>
+    </header>
+    <section class="filters">
+        <div class="locations">
+            <h3>States</h3>
+            <h4>&nbsp;</h4>
+        </div>
+        <div class="amenities">
+            <h3>Amenities</h3>
+            <h4>&nbsp;</h4>
+        </div>
+    </section>
+    <section class="places">
+        <h1>Places</h1>
+        <div class="places_list">
+            {% for place in places %}
+            <article>
+                <div class="title">
+                    <h2>{{ place.name }}</h2>
+                    <div class="price_by_night">
+                        ${{ place.price_by_night }}
+                    </div>
+                </div>
+                <div class="information">
+                    <div class="max_guest">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        {{ place.max_guest }} Guests
+                    </div>
+                    <div class="number_rooms">
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        {{ place.number_rooms }} Bedrooms
+                    </div>
+                    <div class="number_bathrooms">
+                        <i class="fa fa-bath" aria-hidden="true"></i>
+                        {{ place.number_bathrooms }} Bathroom
+                    </div>
+                </div>
+                <div class="description">
+                    {{ place.description | safe }}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Holberton School</p>
+    </footer>
+</body>
+</html>
